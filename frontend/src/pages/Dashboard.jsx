@@ -1,14 +1,19 @@
 import React from "react";
+import ApplicationCard from "../components/ApplicationCard";
 
 const Dashboard = () => {
   return (
-    <div className="bg-background h-[calc(100vh-74px)] p-8">
-      <div className="bg-surface rounded-lg p-6">
-        <h1 className="text-text-primary text-2xl font-medium">Dashboard</h1>
-        <p className="text-text-secondary">This is a card</p>
-        <button className="bg-primary text-white px-4 py-2 rounded-md mt-4">
-          Add Application
-        </button>
+    <div className="h-[calc(100vh-72px)] p-4 overflow-hidden">
+      {" "}
+      {/* outer container with padding */}
+      <div className="grid grid-cols-[20%_55%_25%] gap-4 h-full">
+        {" "}
+        {/* grid container */}
+        <div className="bg-surface rounded-lg p-4 h-full">Left - Filters</div>
+        <div className=" rounded-lg p-4 overflow-y-auto h-full">
+          <ApplicationCard />
+        </div>
+        <div className="bg-surface rounded-lg p-4 h-full">Right - Stats</div>
       </div>
     </div>
   );

@@ -11,13 +11,6 @@
   --color-text-primary: #1b2a3b;
   --color-text-secondary: #64748b;
 
-  /* Status */
-  --color-wishlist: #888780;
-  --color-applied: #0a66c2;
-  --color-interview: #ba7517;
-  --color-offer: #3b6d11;
-  --color-rejected: #a32d2d;
-
   /* Border radius */
   --radius-sm: 4px;
   --radius-md: 8px;
