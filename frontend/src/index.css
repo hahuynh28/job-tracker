@@ -6,6 +6,22 @@
   --color-secondary: #1b2a3b;
   --color-background: #f3f2ee;
   --color-surface: #ffffff;
+  --color-foreground: #1b2a3b;
+  --color-card: #ffffff;
+  --color-card-foreground: #1b2a3b;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1b2a3b;
+  --color-primary-foreground: #ffffff;
+  --color-secondary-foreground: #ffffff;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #1b2a3b;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #0a66c2;
 
   /* Text */
   --color-text-primary: #1b2a3b;
