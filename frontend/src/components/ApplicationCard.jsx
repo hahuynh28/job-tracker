@@ -9,16 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 
-const ApplicationCard = () => {
-  const application = {
-    company: "Google",
-    role: "Frontend Developer",
-    status: "interview",
-    dateApplied: "2026-04-10",
-    link: "careers.google.com",
-    notes: "Referred by a friend",
-  };
-
+const ApplicationCard = ({ application }) => {
   return (
     <div>
       <div className="bg-surface rounded-lg px-6 py-4 mt-4">
@@ -39,16 +30,36 @@ const ApplicationCard = () => {
             <div className="flex items-center gap-2">
               <small className="text-text-secondary">Applied:</small>
               <small className="text-text-secondary">
-                {application.dateApplied}
+                <small className="text-text-secondary">
+                  {new Date(application.dateApplied).toLocaleDateString(
+                    "en-CA",
+                    {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    },
+                  )}
+                </small>
               </small>
             </div>
             <div className="flex items-center gap-2">
               <small className="text-text-secondary">Link:</small>
-              <small className="text-text-secondary">{application.link}</small>
+              {application.link ? (
+                <a
+                  href={application.link}
+                  className="text-blue-500 text-xs underline"
+                >
+                  {application.link}
+                </a>
+              ) : (
+                <small className="text-text-secondary italic">No link</small>
+              )}
             </div>
             <div className="flex items-center gap-2 mb-2">
               <small className="text-text-secondary">Notes:</small>
-              <small className="text-text-secondary">{application.notes}</small>
+              <small className="text-text-secondary">
+                {application.notes ?? "No notes"}
+              </small>
             </div>
           </div>
 
