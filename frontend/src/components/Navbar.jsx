@@ -9,11 +9,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import CreateApplicationDialog from "./CreateApplicationDialog";
+import { Button } from "@/components/ui/button";
+import { useApplication } from "../context/ApplicationContext";
 
 const Navbar = () => {
   const { token, logout } = useAuth();
   const navigate = useNavigate();
+  const { openCreateDialog } = useApplication();
 
   const handleLogout = async () => {
     await authApi.logout();
@@ -28,14 +30,24 @@ const Navbar = () => {
         <div className="right">
           {!token && (
             <>
-              <button className="...">Login</button>
-              <button className="...">Register</button>
+              <button
+                className="border border-primary text-primary px-4 py-2 rounded-md font-medium mr-2"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+              <button
+                className="bg-primary text-white px-4 py-2 rounded-md font-medium"
+                onClick={() => navigate("/register")}
+              >
+                Register
+              </button>
             </>
           )}
 
           {token && (
             <div className="flex items-center gap-3">
-              <CreateApplicationDialog />
+              <Button onClick={openCreateDialog}>Create</Button>
               <DropdownMenu>
                 <DropdownMenuTrigger className="px-4">
                   <span>Account</span>

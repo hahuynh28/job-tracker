@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ApplicationProvider } from "./context/ApplicationContext";
+import CreateApplicationDialog from "./components/CreateApplicationDialog";
+import DeleteConfirmDialog from "./components/DeleteConfirmDialog";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
               }
             />
           </Routes>
+          <CreateApplicationDialog />
+          <DeleteConfirmDialog />
         </ApplicationProvider>
       </BrowserRouter>
     </AuthProvider>
