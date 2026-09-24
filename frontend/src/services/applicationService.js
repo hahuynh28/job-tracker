@@ -25,3 +25,28 @@ export async function createApplication({
   });
   return response.data;
 }
+
+export async function updateApplication({
+  id,
+  company,
+  role,
+  status,
+  link,
+  notes,
+  dateApplied,
+}) {
+  const response = await api.patch(`/applications/${id}`, {
+    company,
+    role,
+    status,
+    link,
+    notes,
+    dateApplied,
+  });
+  return response.data;
+}
+
+export async function deleteApplication({ id }) {
+  const response = await api.delete(`/applications/${id}`);
+  return response.data;
+}

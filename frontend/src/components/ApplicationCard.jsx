@@ -1,6 +1,5 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -8,8 +7,11 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
+import { useApplication } from "../context/ApplicationContext";
 
 const ApplicationCard = ({ application }) => {
+  const { openEditDialog, openDeleteDialog } = useApplication();
+
   return (
     <div>
       <div className="bg-surface rounded-lg px-6 py-4 mt-4">
@@ -69,8 +71,13 @@ const ApplicationCard = ({ application }) => {
                 <MoreHorizontal className="w-4 h-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem className="text-[#a32d2d]">
+                <DropdownMenuItem onClick={() => openEditDialog(application)}>
+                  Edit
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => openDeleteDialog(application)}
+                  className="text-[#a32d2d]"
+                >
                   Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>

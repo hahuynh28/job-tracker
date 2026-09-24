@@ -1,11 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,12 +16,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { createApplication } from "../services/applicationService";
+import {
+  createApplication,
+  updateApplication,
+} from "../services/applicationService";
 import { useApplication } from "../context/ApplicationContext";
 
 const CreateApplicationDialog = () => {
-  const { fetchApplications } = useApplication();
-  const [open, setOpen] = useState(false);
+  const {
+    fetchApplications,
+    isDialogOpen,
+    setIsDialogOpen,
+    editingApplication,
+  } = useApplication();
   const [formData, setFormData] = useState({
     company: "",
     role: "",
@@ -43,8 +49,12 @@ const CreateApplicationDialog = () => {
 
   const handleSubmit = async (e) => {
     try {
-      await createApplication(formData);
-      setOpen(false);
+      if (editingApplication) {
+        await updateApplication({ id: editingApplication.id, ...formData });
+      } else {
+        await createApplication(formData);
+      }
+      setIsDialogOpen(false);
       fetchApplications();
       setFormData({
         company: "",
@@ -59,15 +69,29 @@ const CreateApplicationDialog = () => {
     }
   };
 
+  useEffect(() => {
+    if (editingApplication) {
+      setFormData({
+        company: editingApplication.company || "",
+        role: editingApplication.role || "",
+        status: editingApplication.status || "wishlist",
+        link: editingApplication.link || "",
+        notes: editingApplication.notes || "",
+        dateApplied: editingApplication.dateApplied
+          ? new Date(editingApplication.dateApplied).toISOString().split("T")[0]
+          : "",
+      });
+    }
+  }, [editingApplication]);
+
   return (
     <div>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button>Create</Button>
-        </DialogTrigger>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add New Application</DialogTitle>
+            <DialogTitle>
+              {editingApplication ? "Edit Application" : "Add New Application"}
+            </DialogTitle>
           </DialogHeader>
           <Input
             name="company"

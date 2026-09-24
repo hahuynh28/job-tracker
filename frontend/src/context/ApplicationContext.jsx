@@ -8,6 +8,10 @@ export const ApplicationProvider = ({ children }) => {
   const [selectedStatus, setSelectedStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [editingApplication, setEditingApplication] = useState(null);
+  const [deletingApplication, setDeletingApplication] = useState(null);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const fetchApplications = async () => {
     try {
@@ -23,6 +27,21 @@ export const ApplicationProvider = ({ children }) => {
     }
   };
 
+  const openCreateDialog = () => {
+    setEditingApplication(null);
+    setIsDialogOpen(true);
+  };
+
+  const openEditDialog = (application) => {
+    setEditingApplication(application);
+    setIsDialogOpen(true);
+  };
+
+  const openDeleteDialog = (application) => {
+    setDeletingApplication(application);
+    setIsDeleteDialogOpen(true);
+  };
+
   return (
     <ApplicationContext.Provider
       value={{
@@ -35,6 +54,17 @@ export const ApplicationProvider = ({ children }) => {
         totalPages,
         setTotalPages,
         fetchApplications,
+        isDialogOpen,
+        setIsDialogOpen,
+        editingApplication,
+        setEditingApplication,
+        openCreateDialog,
+        openEditDialog,
+        deletingApplication,
+        setDeletingApplication,
+        isDeleteDialogOpen,
+        setIsDeleteDialogOpen,
+        openDeleteDialog,
       }}
     >
       {children}
