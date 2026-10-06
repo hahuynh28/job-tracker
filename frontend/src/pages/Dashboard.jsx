@@ -50,13 +50,12 @@ const Dashboard = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-[75%_25%] gap-4 flex-1 overflow-hidden">
+      <div className="grid grid-cols-1 gap-4 flex-1 overflow-hidden">
         <div className="rounded-lg p-4 overflow-y-auto h-full">
           {applications.map((app) => (
             <ApplicationCard key={app.id} application={app} />
           ))}
         </div>
-        <div className="bg-surface rounded-lg p-4 h-full">Right - Stats</div>
       </div>
 
       <Pagination>
