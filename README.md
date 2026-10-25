@@ -43,3 +43,12 @@ The application follows a client-server architecture:
 3. The backend handles authentication, request processing, and application business logic.
 4. Prisma provides database access to PostgreSQL.
 5. Protected endpoints require valid authentication.
+
+## Live Demo
+
+Try the deployed application: [Job Tracker]([url](https://job-tracker-eight-indol.vercel.app/login))
+
+**Demo Account**
+
+Email: demo@jobtracker.com
+Password: Demo12345
