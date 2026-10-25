@@ -46,9 +46,10 @@ The application follows a client-server architecture:
 
 ## Live Demo
 
-Try the deployed application: [Job Tracker]([url](https://job-tracker-eight-indol.vercel.app/login))
+Try the deployed application: [Job Tracker](https://job-tracker-eight-indol.vercel.app/login)
 
 **Demo Account**
 
 Email: demo@jobtracker.com
+
 Password: Demo12345
